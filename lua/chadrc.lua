@@ -5,7 +5,9 @@
 local M = {}
 
 M.ui = {
-	theme = "onedark",
+	theme = "jabuti",
+  transparency = true,
+  dashboard = true,
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },

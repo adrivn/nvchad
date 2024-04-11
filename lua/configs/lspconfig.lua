@@ -1,10 +1,10 @@
--- EXAMPLE 
+-- EXAMPLE
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local servers = { "lua_ls", "html", "cssls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -15,9 +15,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- typescript
-lspconfig.tsserver.setup {
+-- python
+lspconfig.basedpyright.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
+}
+
+-- go
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      ["ui.inlayhint.hints"] = { compositeLiteralFields = true, constantValues = true, parameterNames = true },
+    },
+  },
 }
