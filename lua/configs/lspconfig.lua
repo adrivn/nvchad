@@ -4,7 +4,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "lua_ls", "html", "cssls" }
+local servers = { "lua_ls", "html", "cssls", "gopls", "basedpyright" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -12,24 +12,13 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    settings = {
+      Lua = {
+        diagnostics = { globals = { "vim" } },
+      },
+      gopls = {
+        ["ui.inlayhint.hints"] = { compositeLiteralFields = true, constantValues = true, parameterNames = true },
+      },
+    },
   }
 end
-
--- python
-lspconfig.basedpyright.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- go
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-  settings = {
-    gopls = {
-      ["ui.inlayhint.hints"] = { compositeLiteralFields = true, constantValues = true, parameterNames = true },
-    },
-  },
-}

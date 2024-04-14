@@ -57,5 +57,5 @@ map("n", "<leader>pf", "<cmd>Telescope projects<CR>", { desc = "Open projects li
 
 -- Inlay hints
 map("n", "<leader>ih", function()
-  vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), nil)
+  vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
