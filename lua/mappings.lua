@@ -59,3 +59,7 @@ map("n", "<leader>pf", "<cmd>Telescope projects<CR>", { desc = "Open projects li
 map("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
+
+-- TreeSJ
+map("n", "<leader>cj", function() require('treesj').join() end, {desc = "[C]ode block [J]oin"})
+map("n", "<leader>cs", function() require('treesj').split() end, {desc = "[C]ode block [S]plit"})
