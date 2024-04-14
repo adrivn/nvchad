@@ -10,37 +10,35 @@ return {
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim",           opts = {} },
+      { "williamboman/mason-lspconfig.nvim", opts = {} },
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        opts = {
+          ensure_installed = {
+            "stylua",
+            "prettier",
+            "goimports",
+            "goimports-reviser",
+            "gofumpt",
+            "golines",
+            "gomodifytags",
+            "ruff",
+            "basedpyright",
+            "lua_ls",
+            "html",
+            "cssls",
+            "gopls",
+          }
+        },
+      },
+    },
     config = function()
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
-
-  {
-    "williamboman/mason.nvim",
-    dependencies = {
-      {
-        "williamboman/mason-lspconfig.nvim",
-        opts = {
-          ensure_installed = {
-            "lua_ls", "html", "cssls", "gopls", "basedpyright"
-          },
-          automatic_installation = true,
-        }
-      },
-
-      {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        opts = {
-          ensure_installed = {
-            "stylua", "prettier", "goimports", "goimports-reviser", "gofumpt", "golines", "ruff"
-          },
-        }
-      },
-    },
-    opts = {},
-  },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {

@@ -29,18 +29,14 @@ end, { desc = "[P]roject [F]inder" })
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open LazyGit instance" })
 
 -- -- Trouble
-map("n", "<leader>tx", "<cmd>TroubleToggle<CR>", { desc = "Open Trouble Menu" })
-map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", { desc = "Open Workspace Diagnostics" })
-map(
-  "n",
-  "<leader>td",
-  "<cmd>TroubleToggle document_diagnostics<CR>",
-  { desc = "<cmd>TroubleToggle document_diagnostics<CR>" }
-)
-map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", { desc = "<cmd>TroubleToggle loclist<CR>" })
-map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", { desc = "Open Quick Fix Menu" })
-map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", { desc = "<cmd>TroubleToggle lsp_references<CR>" })
-map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "Open TODO Telescope" })
+map("n", "<leader>tx", function() require("trouble").toggle() end, { desc = "Open Trouble Menu" })
+map("n", "<leader>tw", function() require("trouble").toggle("workspace_diagnostics") end,
+  { desc = "TROUBLE: wksp diags" })
+map("n", "<leader>td", function() require("trouble").toggle("document_diagnostics") end, { desc = "TROUBLE: doc diags" })
+map("n", "<leader>tq", function() require("trouble").toggle("quickfix") end, { desc = "TROUBLE: quickfix" })
+map("n", "<leader>tl", function() require("trouble").toggle("loclist") end, { desc = "TROUBLE: loclist" })
+map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "TROUBLE: TODOs" })
+map("n", "gR", function() require("trouble").toggle("lsp_references") end, { desc = "TROUBLE: LSP References" })
 --
 -- Substitute
 map("n", "s", function()
