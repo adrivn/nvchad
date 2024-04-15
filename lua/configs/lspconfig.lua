@@ -15,6 +15,8 @@ for _, lsp in ipairs(servers) do
     settings = {
       Lua = {
         diagnostics = { globals = { "vim" } },
+        telemetry = { enable = false },
+        hint = { enable = true },
       },
       gopls = {
         ["ui.inlayhint.hints"] = { compositeLiteralFields = true, constantValues = true, parameterNames = true },
