@@ -11,8 +11,20 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "williamboman/mason.nvim",           opts = {} },
-      { "williamboman/mason-lspconfig.nvim", opts = {} },
+      { "williamboman/mason.nvim", opts = {} },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          automatic_installation = true,
+          ensure_installed = {
+            "basedpyright",
+            "lua_ls",
+            "html",
+            "cssls",
+            "gopls",
+          },
+        },
+      },
       {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         opts = {
@@ -25,12 +37,7 @@ return {
             "golines",
             "gomodifytags",
             "ruff",
-            "basedpyright",
-            "lua_ls",
-            "html",
-            "cssls",
-            "gopls",
-          }
+          },
         },
       },
     },
@@ -43,7 +50,18 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc", "html", "css", "go", "python", "sql", "bash", "markdown", "yaml" },
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "go",
+        "python",
+        "sql",
+        "bash",
+        "markdown",
+        "yaml",
+      },
     },
   },
 }
