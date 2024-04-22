@@ -3,8 +3,8 @@ local options = {
     lua = { "stylua" },
     -- css = { "prettier" },
     -- html = { "prettier" },
-    go = { "goimports", "goimports-reviser", "golines", "gofumpt" },
-    python = { "ruff_fix", "ruff" },
+    go = { "gofumpt" },
+    python = { "ruff_fix", "ruff_format" },
   },
 
   format_on_save = {

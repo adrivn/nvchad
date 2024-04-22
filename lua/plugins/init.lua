@@ -31,10 +31,7 @@ return {
           ensure_installed = {
             "stylua",
             "prettier",
-            "goimports",
-            "goimports-reviser",
             "gofumpt",
-            "golines",
             "gomodifytags",
             "ruff",
           },
