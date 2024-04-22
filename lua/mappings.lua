@@ -29,14 +29,25 @@ end, { desc = "[P]roject [F]inder" })
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open LazyGit instance" })
 
 -- -- Trouble
-map("n", "<leader>tx", function() require("trouble").toggle() end, { desc = "Open Trouble Menu" })
-map("n", "<leader>tw", function() require("trouble").toggle("workspace_diagnostics") end,
-  { desc = "TROUBLE: wksp diags" })
-map("n", "<leader>td", function() require("trouble").toggle("document_diagnostics") end, { desc = "TROUBLE: doc diags" })
-map("n", "<leader>tq", function() require("trouble").toggle("quickfix") end, { desc = "TROUBLE: quickfix" })
-map("n", "<leader>tl", function() require("trouble").toggle("loclist") end, { desc = "TROUBLE: loclist" })
+map("n", "<leader>tx", function()
+  require("trouble").toggle()
+end, { desc = "Open Trouble Menu" })
+map("n", "<leader>tw", function()
+  require("trouble").toggle "workspace_diagnostics"
+end, { desc = "TROUBLE: wksp diags" })
+map("n", "<leader>td", function()
+  require("trouble").toggle "document_diagnostics"
+end, { desc = "TROUBLE: doc diags" })
+map("n", "<leader>tq", function()
+  require("trouble").toggle "quickfix"
+end, { desc = "TROUBLE: quickfix" })
+map("n", "<leader>tl", function()
+  require("trouble").toggle "loclist"
+end, { desc = "TROUBLE: loclist" })
 map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "TROUBLE: TODOs" })
-map("n", "gR", function() require("trouble").toggle("lsp_references") end, { desc = "TROUBLE: LSP References" })
+map("n", "gR", function()
+  require("trouble").toggle "lsp_references"
+end, { desc = "TROUBLE: LSP References" })
 --
 -- Substitute
 map("n", "s", function()
@@ -57,9 +68,13 @@ map("n", "<leader>pf", "<cmd>Telescope projects<CR>", { desc = "Open projects li
 
 -- Inlay hints
 map("n", "<leader>ih", function()
-  vim.lsp.inlay_hint.enable(vim.api.nvim_get_current_buf(), not vim.lsp.inlay_hint.is_enabled())
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { nil, vim.api.nvim_get_current_buf() })
 end, { desc = "Toggle inlay hints" })
 
 -- TreeSJ
-map("n", "<leader>cj", function() require('treesj').join() end, {desc = "[C]ode block [J]oin"})
-map("n", "<leader>cs", function() require('treesj').split() end, {desc = "[C]ode block [S]plit"})
+map("n", "<leader>cj", function()
+  require("treesj").join()
+end, { desc = "[C]ode block [J]oin" })
+map("n", "<leader>cs", function()
+  require("treesj").split()
+end, { desc = "[C]ode block [S]plit" })
