@@ -20,6 +20,7 @@ for _, lsp in ipairs(servers) do
       },
       gopls = {
         ["ui.inlayhint.hints"] = { compositeLiteralFields = true, constantValues = true, parameterNames = true },
+        gofumpt = true,
       },
     },
   }

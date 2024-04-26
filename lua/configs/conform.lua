@@ -1,9 +1,9 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
-    go = { "gofumpt" },
+    css = { "prettier" },
+    html = { "prettier", "djlint" },
+    go = { "goimports", "gofumpt" },
     python = { "ruff_fix", "ruff_format" },
   },
 
