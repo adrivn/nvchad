@@ -29,25 +29,17 @@ end, { desc = "[P]roject [F]inder" })
 map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open LazyGit instance" })
 
 -- -- Trouble
-map("n", "<leader>tx", function()
-  require("trouble").toggle()
-end, { desc = "Open Trouble Menu" })
-map("n", "<leader>tw", function()
-  require("trouble").toggle "workspace_diagnostics"
-end, { desc = "TROUBLE: wksp diags" })
-map("n", "<leader>td", function()
-  require("trouble").toggle "document_diagnostics"
-end, { desc = "TROUBLE: doc diags" })
-map("n", "<leader>tq", function()
-  require("trouble").toggle "quickfix"
-end, { desc = "TROUBLE: quickfix" })
-map("n", "<leader>tl", function()
-  require("trouble").toggle "loclist"
-end, { desc = "TROUBLE: loclist" })
+map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+map("n", "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+map("n", "<leader>tq", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+map("n", "<leader>tl", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
+map(
+  "n",
+  "<leader>tr",
+  "<cmd>Trouble lsp toggle focus=false win.position=bottom<cr>",
+  { desc = "LSP Definitions / references (Trouble)" }
+)
 map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "TROUBLE: TODOs" })
-map("n", "gR", function()
-  require("trouble").toggle "lsp_references"
-end, { desc = "TROUBLE: LSP References" })
 --
 -- Substitute
 map("n", "s", function()
@@ -78,3 +70,36 @@ end, { desc = "[C]ode block [J]oin" })
 map("n", "<leader>cs", function()
   require("treesj").split()
 end, { desc = "[C]ode block [S]plit" })
+
+-- Flash
+map({ "n", "x", "o" }, "f", function()
+  require("flash").jump()
+end, { desc = "Flash" })
+map({ "n", "x", "o" }, "F", function()
+  require("flash").treesitter()
+end, { desc = "Flash Treesitter" })
+map("o", "r", function()
+  require("flash").remote()
+end, { desc = "Remote Flash" })
+map({ "o", "x" }, "R", function()
+  require("flash").treesitter_search()
+end, { desc = "Treesitter Search" })
+map("c", "<c-s>", function()
+  require("flash").toggle()
+end, { desc = "Toggle Flash Search" })
+
+-- Hop
+-- local hop = require "hop"
+-- local directions = require("hop.hint").HintDirection
+-- vim.keymap.set("", "f", function()
+--   hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = false }
+-- end, { remap = true })
+-- vim.keymap.set("", "F", function()
+--   hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = false }
+-- end, { remap = true })
+-- vim.keymap.set("", "t", function()
+--   hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = false, hint_offset = -1 }
+-- end, { remap = true })
+-- vim.keymap.set("", "T", function()
+--   hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 }
+-- end, { remap = true })
